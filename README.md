@@ -1,3 +1,30 @@
+# Start a new project
+
+## Install
+
+```bash
+$ git clone https://github.com/mig-hub/sveltekit-boilerplate.git
+```
+
+Rename directory and move there.
+Update the `package.json` to change the package name.
+
+Then install packages:
+
+```bash
+$ npm install
+```
+
+Install contentful if you want to use it.
+
+```bash
+$ npm install --save contentful
+```
+
+If you do, ensure you uncomment necessary lines in the config and add the ENV variables.
+
+There are plugins and middlewares ready to be used by uncommenting the right lines in the config.
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
