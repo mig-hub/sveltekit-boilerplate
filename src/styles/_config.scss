@@ -1,0 +1,65 @@
+@import 'framework';
+
+$body-size: 18px;
+$body-size-tablet: 18px;
+$body-size-mobile: 18px;
+
+$ref-width: 1440px;
+$ref-width-tablet: 834px;
+$tablet-breakpoint: 840px;
+$ref-width-mobile: 375px;
+$mobile-breakpoint: 600px;
+
+$fg-color: #000000;
+$bg-color: #ffffff;
+
+$header-height: 80px;
+$header-height-tablet: 80px;
+$header-height-mobile: 80px;
+
+$body-font-family: sans-serif;
+
+$vw-ref-width: $ref-width; // Init vw ref width
+
+@mixin tablet {
+  @media screen and (orientation: portrait) and (min-width: $mobile-breakpoint+1) and (max-width: $tablet-breakpoint) {
+    $vw-ref-width: $ref-width-tablet !global;
+    @content;
+    $vw-ref-width: $ref-width !global;
+  }
+}
+
+@mixin mobile {
+  @media screen and (orientation: portrait) and (max-width: $mobile-breakpoint) {
+    $vw-ref-width: $ref-width-mobile !global;
+    @content;
+    $vw-ref-width: $ref-width !global;
+  }
+}
+
+@mixin tablet-or-mobile {
+  // Bear in mind this is only a convenience mixin block for things that start on tablet and
+  // remain on mobile. But the measurements are for tablet so anything using vw() should
+  // have its own version in a mobile-portrait block. Ideally you only want properties
+  // without vw() measurements inside this one and put all vw() properties in separate
+  // specific breakpoint blocks.
+  @media screen and (orientation: portrait) and (max-width: $tablet-breakpoint) {
+    $vw-ref-width: $ref-width-tablet !global;
+    @content;
+    $vw-ref-width: $ref-width !global;
+  }
+}
+
+@mixin any {
+  @content;
+  @include mobile {
+    @content;
+  }
+  @include tablet {
+    @content;
+  }
+}
+
+// Extendable classes
+
+
