@@ -84,10 +84,11 @@ module.exports = {
 
     let field = this.createSymbolField( contentType, fieldId, fieldName, {
       ...control,
-    })
-      .validations([
-        this.regexpUri(),
-      ]);
+    });
+      // Commented out because the regex prevent root relative paths and some schemes like mailto.
+      // .validations([
+      //   this.regexpUri(),
+      // ]);
 
     return field;
 
