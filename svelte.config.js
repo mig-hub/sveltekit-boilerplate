@@ -1,4 +1,7 @@
+// Pick the right adapter
 import adapter from '@sveltejs/adapter-auto';
+// import adapter from '@sveltejs/adapter-netlify';
+
 import sveltePreprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
