@@ -48,5 +48,13 @@
     }
   }
 
+  img.lazy {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    &.visible {
+      opacity: 1;
+    }
+  }
+
 </style>
 
