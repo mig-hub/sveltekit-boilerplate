@@ -115,6 +115,22 @@ module.exports = {
     return field;
   },
 
+  createEntryField( contentType, fieldId, fieldName, acceptedTypes, control = {} ) {
+    let field = contentType.createField(fieldId)
+      .type('Link')
+      .validations([
+        this.isAcceptedContentType( acceptedTypes ),
+      ])
+      .linkType('Entry')
+      .name( fieldName );
+
+    contentType.changeFieldControl( fieldId, 'builtin', 'entryLinkEditor', {
+      ...control,
+    });
+
+    return field;
+  },
+
   createEntryArrayField( contentType, fieldId, fieldName, acceptedTypes, control = {} ) {
 
     // acceptedTypes can be an array or a single contentType name
@@ -124,7 +140,7 @@ module.exports = {
       .items({
         "type": "Link",
         "validations": [
-          isAcceptedContentType( acceptedTypes ),
+          this.isAcceptedContentType( acceptedTypes ),
         ],
         "linkType": "Entry",
       })
