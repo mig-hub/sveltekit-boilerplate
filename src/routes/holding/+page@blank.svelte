@@ -9,7 +9,7 @@
 <script>
 </script>
 
-<style>
+<style lang='scss'>
   .holding {
     position: fixed;
     left: 0;

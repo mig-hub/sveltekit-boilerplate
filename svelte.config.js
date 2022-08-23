@@ -11,11 +11,6 @@ const config = {
   },
   preprocess: [
     sveltePreprocess({
-      defaults: {
-        style: 'scss',
-        script: 'javascript',
-        markup: 'html',
-      },
       scss: {
         prependData: `@import 'src/styles/_config.scss';`,
         renderSync: true,

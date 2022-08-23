@@ -1,6 +1,7 @@
 import contentfulClient from '$lib/contentfulClient';
 
-export async function get() {
+/** @type {import('./$types').RequestHandler} */
+export async function GET() {
 
   // Set what needs to be loaded and replace the `content` var.
   const content = null;
@@ -18,15 +19,12 @@ export async function get() {
       body[item.sys.contentType.sys.id] = item;
     });
 
-    return {
+    return new Response( JSON.stringify( body ), {
       status: 200,
-      body: body,
-    };
+    });
   }
 
-  return {
-    status: 404,
-  };
+  throw error(400, 'No contentful content loaded.');
 
 }
 
